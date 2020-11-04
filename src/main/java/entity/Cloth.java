@@ -1,3 +1,5 @@
+package entity;
+
 public class Cloth extends Product {
 
 
@@ -10,4 +12,20 @@ public class Cloth extends Product {
         this.material = material;
     }
 
+    public String getMaterial() {
+        return material;
+    }
+
+    public String getSize() {
+        return size;
+
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Cloth{" +
+                "size='" + size + '\'' +
+                ", material='" + material + '\'' +
+                '}';
+    }
 }
