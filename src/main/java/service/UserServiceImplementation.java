@@ -11,7 +11,7 @@ public class UserServiceImplementation implements UserService {
     List<User> users;
 
     public UserServiceImplementation() {
-        this.users = new ArrayList<User>();
+        this.users = new ArrayList<>();
     }
 
     public UserServiceImplementation(List<User> users) {

@@ -11,7 +11,7 @@ public class ProductServiceImplementation implements ProductService {
     List<Product> products;
 
     public ProductServiceImplementation() {
-        products = new ArrayList<Product>();
+        products = new ArrayList<>();
     }
 
     public ProductServiceImplementation(List<Product> products) {
