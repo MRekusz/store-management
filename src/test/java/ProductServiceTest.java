@@ -5,6 +5,7 @@ import entity.Product;
 import entity.User;
 import org.junit.Assert;
 import org.junit.Test;
+import service.ProductServiceImplementation;
 import service.UserServiceImplementation;
 
 import java.util.ArrayList;
@@ -20,10 +21,9 @@ public class ProductServiceTest {
         products.add(new Boots(2, "shoes1", 20, 1.1, "Black", 1, 44));
 
         ProductServiceImplementation productServiceImplementation = new ProductServiceImplementation(products);
-        List<Product> productsFromTestClass = ProductServiceImplementation.getAllProducts();
+        List<Product> productsFromTestClass = productServiceImplementation.getAllProducts();
 
         Assert.assertEquals(products, productsFromTestClass);
-
     }
 
     @Test
@@ -34,7 +34,7 @@ public class ProductServiceTest {
 
         ProductServiceImplementation productServiceImplementation = new ProductServiceImplementation(products);
         int result = productServiceImplementation.getProductsCount();
-        Assert.assertEquals(products, result);
+        Assert.assertEquals(products.size(), result);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class ProductServiceTest {
     @Test
     public void isProductOnWarehouseTest() {
         List<Product> products = new ArrayList<>();
-        products.add(new Boots(2, "shoes1", 20, 1.1, "Black", 1, 44));
+        products.add(new Boots(2, "Boots", 20, 1.1, "Black", 1, 44));
 
         ProductServiceImplementation productServiceImplementation = new ProductServiceImplementation(products);
         boolean isProductOnWareHouse = productServiceImplementation.isProductOnWarehouse("Boots");
@@ -67,7 +67,7 @@ public class ProductServiceTest {
         products.add(new Boots(2, "shoes1", 20, 1.1, "Black", 1, 44));
 
         ProductServiceImplementation productServiceImplementation = new ProductServiceImplementation(products);
-        boolean isProductByNameExists = productServiceImplementation.isProductByNameExists("Boots");
+        boolean isProductByNameExists = productServiceImplementation.isProductByNameExists("shoes1");
 
         Assert.assertTrue(isProductByNameExists);
     }
@@ -76,13 +76,12 @@ public class ProductServiceTest {
     @Test
     public void isProductByIdExistsTest() {
         List<Product> products = new ArrayList<>();
-        products.add(new Cloth(1, "cloth1", 10.5f, 11.3f, "Black", 1, "L", "cotton"));
+        products.add(new Cloth(1L, "cloth1", 10.5f, 11.3f, "Black", 1, "L", "cotton"));
 
         ProductServiceImplementation productServiceImplementation = new ProductServiceImplementation(products);
-        boolean isProductByIdExists = productServiceImplementation.isProductByIdExists(1);
+        boolean isProductByIdExists = productServiceImplementation.isProductByIdExists(1L);
 
         Assert.assertTrue(isProductByIdExists);
-
     }
 
 }
