@@ -20,6 +20,9 @@ public class ProductDaoImplementation implements ProductDao {
 
     @Override
     public void saveProduct(Product product) throws IOException {
+        List<Product> products = getAllProducts();
+        products.add(product);
+        saveProduct(product);
 
     }
 
