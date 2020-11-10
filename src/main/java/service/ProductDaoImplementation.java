@@ -19,7 +19,7 @@ public class ProductDaoImplementation implements ProductDao {
     public ProductDaoImplementation(String fileName, String productType) throws IOException {
         this.fileName = fileName;
         this.productType = productType;
-        FileUtils.touch(new File("ProductFile.txt"));
+        FileUtils.touch(new File("ProductsFile.txt"));
     }
 
     @Override
