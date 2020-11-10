@@ -2,19 +2,25 @@ package api;
 
 import entity.User;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 public interface UserDao {
 
-    void saveUser(User user);
-    void saveUsers(List<User> users);
+    List<User> getAllUsers() throws IOException;
 
-    List<User> getAllUsers();
-    User getUserByLogin(String login);
-    User getUserById(Long userId);
+    void saveUser(User user) throws IOException;
 
-    void removeUserByLogin(String login);
-    void removeUserById(Long id);
+    void saveUsers(List<User> users) throws FileNotFoundException;
+
+    User getUserById(Long userId) throws IOException;
+
+    User getUserByLogin(String login) throws IOException;
+
+    void removeUserById(Long userId) throws IOException;
+
+    void removeUserByLogin(String login) throws IOException;
 
 
 }
