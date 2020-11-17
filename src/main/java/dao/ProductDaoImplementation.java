@@ -62,6 +62,32 @@ public class ProductDaoImplementation implements ProductDao {
     }
 
     @Override
+    public Product getProductById(Long productId) throws IOException {
+        List<Product> products = getAllProducts();
+
+        for (Product product : products) {
+            boolean isFoundProduct = product.getId() == productId;
+            if (isFoundProduct) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Product getProductByProductName(String productName) throws IOException {
+        List<Product> products = getAllProducts();
+
+        for (Product product : products) {
+            boolean isFoundProduct = product.getProductName().equals(productName);
+            if (isFoundProduct) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public void removeProductsById(Long productId) throws IOException {
         List<Product> products = getAllProducts();
 
@@ -87,30 +113,6 @@ public class ProductDaoImplementation implements ProductDao {
         saveProducts(products);
     }
 
-    @Override
-    public Product getProductById(Long productId) throws IOException {
-        List<Product> products = getAllProducts();
 
-        for (Product product : products) {
-            boolean isFoundProduct = product.getId() == productId;
-            if (isFoundProduct) {
-                return product;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public Product getProductByProductName(String productName) throws IOException {
-        List<Product> products = getAllProducts();
-
-        for (Product product : products) {
-            boolean isFoundProduct = product.getProductName().equals(productName);
-            if (isFoundProduct) {
-                return product;
-            }
-        }
-        return null;
-    }
 
 }
