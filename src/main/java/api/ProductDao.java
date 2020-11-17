@@ -10,12 +10,10 @@ public interface ProductDao {
 
     List<Product> getAllProducts() throws IOException;
 
-
     void saveProduct(Product product) throws IOException;
+    void saveProducts(List<Product> products) throws IOException;
 
-    void saveProducts(List<Product> products) throws FileNotFoundException;
     void removeProductsById(Long productId) throws IOException;
-
     void removeProductByName(String productName) throws IOException;
     Product getProductById(Long productId) throws IOException;
     Product getProductByProductName(String productName) throws IOException;

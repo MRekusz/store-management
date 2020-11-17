@@ -30,14 +30,16 @@ public class ProductDaoImplementation implements ProductDao {
 
         FileReader fileReader = new FileReader(fileName);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
+
         String readOneLine = bufferedReader.readLine();
 
         while (readOneLine != null) {
             Product product = ProductParser.productToString(readOneLine, productType);
-            readOneLine = bufferedReader.readLine();
+            if (product != null) {
+                products.add(product);
+            }
+            bufferedReader.close();
         }
-        bufferedReader.close();
-
         return products;
     }
 
@@ -45,12 +47,12 @@ public class ProductDaoImplementation implements ProductDao {
     public void saveProduct(Product product) throws IOException {
         List<Product> products = getAllProducts();
         products.add(product);
-        saveProduct(product);
+        saveProducts(products);
     }
 
     @Override
-    public void saveProducts(List<Product> products) throws FileNotFoundException {
-
+    public void saveProducts(List<Product> products) throws IOException {
+        FileUtils.clearFile(fileName);
         FileOutputStream fileOutputStream = new FileOutputStream(fileName, true);
         PrintWriter printWriter = new PrintWriter(fileOutputStream);
         for (Product product : products) {
