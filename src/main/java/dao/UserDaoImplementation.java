@@ -11,11 +11,10 @@ import java.util.List;
 public class UserDaoImplementation implements UserDao {
 
     private final String fileName;
-    private final String productType;
 
-    public UserDaoImplementation(String fileName, String productType) throws IOException {
+
+    public UserDaoImplementation(String fileName) throws IOException {
         this.fileName = fileName;
-        this.productType = productType;
         FileUtils.createNewFile(fileName);
     }
 

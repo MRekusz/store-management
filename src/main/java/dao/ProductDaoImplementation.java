@@ -2,7 +2,7 @@ package dao;
 
 import api.ProductDao;
 import entity.Product;
-import org.apache.commons.io.FileUtils;
+import utils.FileUtils;
 
 import java.io.*;
 
@@ -19,9 +19,7 @@ public class ProductDaoImplementation implements ProductDao {
     public ProductDaoImplementation(String fileName, String productType) throws IOException {
         this.fileName = fileName;
         this.productType = productType;
-//        FileUtils.touch(new File("ProductsFile.txt"));
-        File file = new File(fileName);
-        file.createNewFile();
+        FileUtils.createNewFile(fileName);
 
     }
 
