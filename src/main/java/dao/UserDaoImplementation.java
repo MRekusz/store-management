@@ -1,8 +1,8 @@
-package service;
+package dao;
 
 import api.UserDao;
 import entity.User;
-import org.apache.commons.io.FileUtils;
+import utils.FileUtils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -11,10 +11,12 @@ import java.util.List;
 public class UserDaoImplementation implements UserDao {
 
     private final String fileName;
+    private final String productType;
 
-    public UserDaoImplementation(String fileName) throws IOException {
+    public UserDaoImplementation(String fileName, String productType) throws IOException {
         this.fileName = fileName;
-        FileUtils.touch(new File("UsersFile.txt"));
+        this.productType = productType;
+        FileUtils.createNewFile(fileName);
     }
 
     @Override

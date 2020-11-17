@@ -1,4 +1,4 @@
-package service;
+package dao;
 
 import api.ProductDao;
 import entity.Product;
@@ -19,7 +19,10 @@ public class ProductDaoImplementation implements ProductDao {
     public ProductDaoImplementation(String fileName, String productType) throws IOException {
         this.fileName = fileName;
         this.productType = productType;
-        FileUtils.touch(new File("ProductsFile.txt"));
+//        FileUtils.touch(new File("ProductsFile.txt"));
+        File file = new File(fileName);
+        file.createNewFile();
+
     }
 
     @Override
