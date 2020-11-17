@@ -3,6 +3,7 @@ package entity;
 public class Product {
 
 
+    public static final String PRODUCT_SEPARATOR = "#";
     protected long id;
     String productName;
     public double price;

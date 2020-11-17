@@ -2,10 +2,10 @@ package dao;
 
 import api.ProductDao;
 import entity.Product;
+import entity.parser.ProductParser;
 import utils.FileUtils;
 
 import java.io.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +21,24 @@ public class ProductDaoImplementation implements ProductDao {
         this.productType = productType;
         FileUtils.createNewFile(fileName);
 
+    }
+
+    @Override
+    public List<Product> getAllProducts() throws IOException {
+
+        List<Product> products = new ArrayList<>();
+
+        FileReader fileReader = new FileReader(fileName);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String readOneLine = bufferedReader.readLine();
+
+        while (readOneLine != null) {
+            Product product = ProductParser.productToString(readOneLine, productType);
+            readOneLine = bufferedReader.readLine();
+        }
+        bufferedReader.close();
+
+        return products;
     }
 
     @Override
@@ -65,23 +83,6 @@ public class ProductDaoImplementation implements ProductDao {
             }
         }
         saveProducts(products);
-    }
-
-    @Override
-    public List<Product> getAllProducts() throws IOException {
-
-        List<Product> products = new ArrayList<>();
-
-        FileReader fileReader = new FileReader(fileName);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        String readOneLine = bufferedReader.readLine();
-
-        while (readOneLine != null) {
-            readOneLine = bufferedReader.readLine();
-        }
-        bufferedReader.close();
-
-        return products;
     }
 
     @Override
