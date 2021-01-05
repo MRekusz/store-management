@@ -15,7 +15,7 @@ public class UserValidator {
 
     private static UserValidator instance = null;
 
-    public UserValidator getInstance() {
+    public static UserValidator getInstance() {
         if (instance == null) {
             instance = new UserValidator();
         }

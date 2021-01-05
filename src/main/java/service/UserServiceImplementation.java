@@ -1,41 +1,47 @@
 package service;
 
+import api.UserDao;
 import api.UserService;
 import entity.User;
+import exception.UserLoginAlreadyExistException;
+import exception.UserShortLengthLoginException;
+import exception.UserShortLengthPasswordException;
+import validator.UserValidator;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 public class UserServiceImplementation implements UserService {
 
-    List<User> users;
+    private static UserServiceImplementation instance = null;
+    private UserDao userDao = (UserDao) UserServiceImplementation.getInstance();
+    private UserValidator userValidator = UserValidator.getInstance();
 
-    public UserServiceImplementation() {
-        this.users = new ArrayList<>();
+    private UserServiceImplementation() {
     }
 
-    public UserServiceImplementation(List<User> users) {
-        this.users = users;
-    }
-
-    @Override
-    public List<User> getAllUsers() {
-        return users;
-    }
-
-    @Override
-    public void addUser(User user) {
-        users.add(user);
+    public static UserServiceImplementation getInstance(){
+        if (instance == null){
+            instance = new UserServiceImplementation();
+        }
+        return instance;
     }
 
     @Override
-    public void removeUserById(long id) {
-        for (int i = 0; i < users.size(); i++) {
-            User userFromList = users.get(i);
-            if (userFromList.getId() == id) {
-                users.remove(i);
-                break;
-            }
+    public List<User> getAllUsers() throws IOException {
+        return userDao.getAllUsers();
+    }
+
+    @Override
+    public void addUser(User user)throws IOException, UserShortLengthPasswordException, UserLoginAlreadyExistException, UserShortLengthLoginException {
+        if (userValidator.isValidate(user)){
+            userDao.saveUser(user);
         }
     }
-}
+
+    @Override
+    public void removeUserById(long id) throws IOException {
+        userDao.removeUserById(id);
+        }
+    }
+
