@@ -1,6 +1,10 @@
 package validator;
 
 import api.UserDao;
+import entity.User;
+import exception.UserLoginAlreadyExistException;
+import exception.UserShortLengthLoginException;
+import exception.UserShortLengthPasswordException;
 
 import java.io.IOException;
 
@@ -34,6 +38,19 @@ public class UserValidator {
             e.printStackTrace();
         }
         if (userDao == null) return false;
+
+        return true;
+    }
+
+    public boolean isValidate(User user) throws UserLoginAlreadyExistException, UserShortLengthLoginException, UserShortLengthPasswordException {
+        if (isLoginAlreadyExists(user.getLogin()))
+            throw new UserLoginAlreadyExistException("User already exists");
+
+        if (isLoginLengthEnough(user.getLogin()))
+            throw new UserShortLengthLoginException("Login is too short");
+
+        if (isPasswordLengthEnough(user.getPassword()))
+            throw new UserShortLengthPasswordException(user.getPassword());
 
         return true;
     }
