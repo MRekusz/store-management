@@ -1,20 +1,36 @@
 package service;
 
+import api.ProductDao;
 import api.ProductService;
+import dao.ProductDaoImplementation;
 import entity.Product;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductServiceImplementation implements ProductService {
 
+    private static ProductServiceImplementation instance = null;
+    private ProductServiceImplementation productServiceImplementation = ProductServiceImplementation.getInstance();
+    private ProductDao productDao = new ProductDaoImplementation("products.data", "Product");
+
+    //    private ProductServiceImplementation(){}
+
+    private static ProductServiceImplementation getInstance() throws IOException {
+        if (instance == null) {
+            instance = new ProductServiceImplementation();
+        }
+        return instance;
+    }
+
     List<Product> products;
 
-    public ProductServiceImplementation() {
+    public ProductServiceImplementation() throws IOException {
         products = new ArrayList<>();
     }
 
-    public ProductServiceImplementation(List<Product> products) {
+    public ProductServiceImplementation(List<Product> products) throws IOException {
         this.products = products;
     }
 
