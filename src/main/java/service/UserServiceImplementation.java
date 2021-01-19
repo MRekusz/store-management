@@ -32,6 +32,7 @@ public class UserServiceImplementation implements UserService {
         return userDao.getAllUsers();
     }
 
+
     @Override
     public void addUser(User user)throws IOException, UserShortLengthPasswordException, UserLoginAlreadyExistException, UserShortLengthLoginException {
         if (userValidator.isValidate(user)){
