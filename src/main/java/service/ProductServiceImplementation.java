@@ -6,7 +6,6 @@ import dao.ProductDaoImplementation;
 import entity.Product;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductServiceImplementation implements ProductService {
@@ -15,11 +14,11 @@ public class ProductServiceImplementation implements ProductService {
     private ProductDao productDao = new ProductDaoImplementation("products.data", "PRODUCT");
 
 
-    private ProductServiceImplementation() {
+    private ProductServiceImplementation() throws IOException {
     }
 
 
-    public static ProductServiceImplementation getInstance() {
+    public static ProductServiceImplementation getInstance() throws IOException {
         if (instance == null) {
             instance = new ProductServiceImplementation();
         }

@@ -21,8 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e742fb5f-4dfa-4bd7-90a3-c700ffb96d15" name="Default Changelist" comment="* new method in validator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDaoImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UserDaoImplementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/ProductServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ProductServiceImplementation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,9 +136,9 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.managment" />
       <item itemvalue="Application.Calculator" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.managment" />
       <item itemvalue="JUnit.ProductServiceTest" />
       <item itemvalue="JUnit.UserServiceTest" />
     </list>
