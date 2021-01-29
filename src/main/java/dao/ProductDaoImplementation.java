@@ -12,15 +12,23 @@ import java.util.List;
 
 public class ProductDaoImplementation implements ProductDao {
 
+    private static ProductDaoImplementation instance = null;
+    private final String fileName = "products.data";
 
-    private final String fileName;
-    private final String productType;
+    private ProductDaoImplementation() {
+        try {
+            FileUtils.createNewFile(fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-    public ProductDaoImplementation(String fileName, String productType) throws IOException {
-        this.fileName = fileName;
-        this.productType = productType;
-        FileUtils.createNewFile(fileName);
+    public static ProductDaoImplementation getInstance() throws IOException {
+        if (instance == null) {
+            instance = new ProductDaoImplementation();
+        }
 
+        return instance;
     }
 
 
@@ -36,7 +44,7 @@ public class ProductDaoImplementation implements ProductDao {
         String readOneLine = bufferedReader.readLine();
 
         while (readOneLine != null) {
-            Product product = ProductParser.productToString(readOneLine, productType);
+            Product product = ProductParser.productToString(readOneLine);
             if (product != null) {
                 products.add(product);
             }

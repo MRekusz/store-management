@@ -6,7 +6,9 @@ import entity.Product;
 
 public class ProductParser {
 
-    public static Product productToString(String productStr, String productType) {
+
+
+    public static Product productToString(String productStr) {
 
         if (productType.equals("PRODUCT")) {
             return convertToProduct(productStr);
@@ -21,12 +23,12 @@ public class ProductParser {
     private static Product convertToProduct(String productStr) {
         String[] productInformation = productStr.split(Product.PRODUCT_SEPARATOR);
 
-        Long id = Long.parseLong(productInformation[0]);
-        String productName = productInformation[1];
-        Float price = Float.parseFloat(productInformation[2]);
-        Float weight = Float.parseFloat(productInformation[3]);
-        String color = productInformation[4];
-        Integer productCount = Integer.parseInt(productInformation[5]);
+        Long id = Long.parseLong(productInformation[1]);
+        String productName = productInformation[2];
+        Float price = Float.parseFloat(productInformation[3]);
+        Float weight = Float.parseFloat(productInformation[4]);
+        String color = productInformation[5];
+        Integer productCount = Integer.parseInt(productInformation[6]);
         return new Product(id, productName, price, weight, color, productCount);
     }
 
