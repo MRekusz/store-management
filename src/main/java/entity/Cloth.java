@@ -2,6 +2,7 @@ package entity;
 
 public class Cloth extends Product {
 
+    public static final char Product_Type = 'C';
 
     String size;
     String material;

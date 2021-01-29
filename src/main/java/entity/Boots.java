@@ -2,7 +2,7 @@ package entity;
 
 public class Boots extends Product {
 
-
+    public static final char Product_Type = 'B';
     int size;
     boolean isNaturalSkin;
 

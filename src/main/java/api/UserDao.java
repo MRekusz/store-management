@@ -11,16 +11,11 @@ public interface UserDao {
     List<User> getAllUsers() throws IOException;
 
     void saveUser(User user) throws IOException;
-
     void saveUsers(List<User> users) throws FileNotFoundException;
 
     User getUserById(Long userId) throws IOException;
-
     User getUserByLogin(String login) throws IOException;
 
-    void removeUserById(Long userId) throws IOException;
-
-    void removeUserByLogin(String login) throws IOException;
 
 
 }

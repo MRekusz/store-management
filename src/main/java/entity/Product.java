@@ -4,12 +4,14 @@ public class Product {
 
 
     public static final String PRODUCT_SEPARATOR = "#";
+    public static final char Product_Type = 'P';
     protected long id;
     String productName;
     public double price;
     double weight;
     String color;
     public int productCount;
+
 
 
     public Product(long id, String productName, double price, double weight, String color, int productCount) {
