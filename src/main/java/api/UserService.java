@@ -11,7 +11,7 @@ import java.util.List;
 public interface UserService {
 
     List<User> getAllUsers() throws IOException;
-    void addUser(User user) throws IOException, UserShortLengthPasswordException, UserLoginAlreadyExistException, UserShortLengthLoginException;
+    boolean addUser(User user) throws IOException, UserShortLengthPasswordException, UserLoginAlreadyExistException, UserShortLengthLoginException;
     void removeUserById(long id) throws IOException;
 
 
