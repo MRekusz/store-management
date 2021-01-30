@@ -22,4 +22,8 @@ public class Main {
         System.out.println("2 - Dodaj ubrania");
         System.out.println("3 - Inne");
     }
+
+    public static void main(String[] args) {
+
+    }
 }

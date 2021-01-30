@@ -1,9 +1,9 @@
 package service;
 
-import api.ProductDao;
 import api.ProductService;
 import dao.ProductDaoImplementation;
 import entity.Product;
+import validator.ProductValidator;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,8 +11,8 @@ import java.util.List;
 public class ProductServiceImplementation implements ProductService {
 
     private static ProductServiceImplementation instance = null;
-    private ProductDao productDao = new ProductDaoImplementation("products.data", "PRODUCT");
-
+    private ProductDaoImplementation productDao = ProductDaoImplementation.getInstance();
+    private ProductValidator productValidator = ProductValidator.getInstance();
 
     private ProductServiceImplementation() throws IOException {
     }

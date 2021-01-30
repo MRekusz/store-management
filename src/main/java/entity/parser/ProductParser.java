@@ -10,14 +10,18 @@ public class ProductParser {
 
     public static Product productToString(String productStr) {
 
-        if (productType.equals("PRODUCT")) {
-            return convertToProduct(productStr);
-        } else if (productType.equals("CLOTH")) {
-            return convertToCloth(productStr);
-        } else if (productType.equals("BOOTS")) {
-            return convertToBoots(productStr);
-        }
-        return null;
+        final char productType = productStr.charAt(0);
+
+        switch (productType){
+            case Product.Product_Type:
+                return convertToProduct(productStr);
+
+            case Cloth.Product_Type:
+                return convertToCloth(productStr);
+
+            case Boots.Product_Type:
+                return convertToBoots(productStr);
+        } return null;
     }
 
     private static Product convertToProduct(String productStr) {

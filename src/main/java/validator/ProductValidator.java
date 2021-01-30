@@ -13,7 +13,7 @@ public class ProductValidator {
     private ProductValidator() {
     }
 
-    public ProductValidator getInstance() {
+    public static ProductValidator getInstance() {
         if (instance == null) {
             instance = new ProductValidator();
         }
