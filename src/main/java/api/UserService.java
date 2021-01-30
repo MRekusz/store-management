@@ -13,6 +13,7 @@ public interface UserService {
     List<User> getAllUsers() throws IOException;
     boolean addUser(User user) throws IOException, UserShortLengthPasswordException, UserLoginAlreadyExistException, UserShortLengthLoginException;
     void removeUserById(long id) throws IOException;
+    public boolean isCorrectLoginAndPassword(String login, String password);
 
 
 }

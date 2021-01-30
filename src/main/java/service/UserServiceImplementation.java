@@ -15,14 +15,15 @@ public class UserServiceImplementation implements UserService {
     private UserDao userDao = (UserDao) UserServiceImplementation.getInstance();
     private UserValidator userValidator = UserValidator.getInstance();
 
-    private UserServiceImplementation() {
-    }
+
 
     public static UserServiceImplementation getInstance() {
         if (instance == null) {
             instance = new UserServiceImplementation();
         }
         return instance;
+    }
+    private UserServiceImplementation() {
     }
 
     @Override
@@ -72,6 +73,20 @@ public class UserServiceImplementation implements UserService {
     @Override
     public void removeUserById(long id) throws IOException {
             userDao.removeUserById(id);
+    }
+
+    @Override
+    public boolean isCorrectLoginAndPassword(String login, String password) {
+        User foundUser = getUserByLogin(login);
+
+        if (foundUser == null) {
+            return false;
+        }
+
+        boolean isCorrectLogin = foundUser.getLogin().equals(login);
+        boolean isCorrectPass = foundUser.getPassword().equals(password);
+
+        return isCorrectLogin && isCorrectPass;
     }
 }
 
