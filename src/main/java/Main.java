@@ -1,4 +1,10 @@
+import api.ProductService;
+import api.UserRegisterLoginFacade;
 import entity.Boots;
+import entity.Cloth;
+import entity.Product;
+import facade.UserRegisterLoginFacadeImplementation;
+import service.ProductServiceImplementation;
 
 import java.util.Scanner;
 
@@ -25,6 +31,27 @@ public class Main {
         System.out.println("3 - Inne");
     }
 
+    public static Product createOtherProduct() {
+        String productName, color;
+        Float price, weight;
+        Integer count;
+        System.out.println("ProductName: ");
+        productName = scanner.next();
+
+        System.out.println("Price: ");
+        price = scanner.nextFloat();
+
+        System.out.println("Weight: ");
+        weight = scanner.nextFloat();
+
+        System.out.println("Color: ");
+        color = scanner.next();
+
+        System.out.println("Count: ");
+        count = scanner.nextInt();
+
+        return new Product(1, productName, price, weight, color, count);
+    }
 
     public static Boots createBootsProduct(){
         String productName, color;
@@ -57,7 +84,46 @@ public class Main {
         return new Boots(1, productName, price, weight, color, count, size, isNaturalSkin);
     }
 
+    public static Product createClothProduct() {
+        String productName, color, size, material;
+        Float price, weight;
+        Integer count;
+
+        System.out.println("ProductName: ");
+        productName = scanner.next();
+
+        System.out.println("Price: ");
+        price = scanner.nextFloat();
+
+        System.out.println("Weight: ");
+        weight = scanner.nextFloat();
+
+        System.out.println("Color: ");
+        color = scanner.next();
+
+        System.out.println("Count: ");
+        count = scanner.nextInt();
+
+        System.out.println("Size: ");
+        size = scanner.next();
+
+        System.out.println("Material: ");
+        material = scanner.next();
+
+
+        return new Cloth(1, productName, price, weight, color, count, size, material);
+    }
+
     public static void main(String[] args) {
+
+        UserRegisterLoginFacade userFacade = UserRegisterLoginFacadeImplementation.getInstance();
+        ProductService productService = ProductServiceImplementation.getInstance();
+        boolean appOn = true;
+        boolean loggedOn = false;
+        int read;
+
+
+
 
     }
 }

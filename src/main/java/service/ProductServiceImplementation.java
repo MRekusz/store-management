@@ -18,9 +18,13 @@ public class ProductServiceImplementation implements ProductService {
     }
 
 
-    public static ProductServiceImplementation getInstance() throws IOException {
+    public static ProductServiceImplementation getInstance() {
         if (instance == null) {
-            instance = new ProductServiceImplementation();
+            try {
+                instance = new ProductServiceImplementation();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return instance;
     }

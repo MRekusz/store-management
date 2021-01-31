@@ -23,7 +23,7 @@ public class ProductDaoImplementation implements ProductDao {
         }
     }
 
-    public static ProductDaoImplementation getInstance() throws IOException {
+    public static ProductDaoImplementation getInstance() {
         if (instance == null) {
             instance = new ProductDaoImplementation();
         }
