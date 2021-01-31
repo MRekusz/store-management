@@ -38,26 +38,86 @@ public class ProductServiceImplementation implements ProductService {
 
     @Override
     public Product getProductByProductName(String productName) throws IOException {
+        List<Product> products = getAllProducts();
+
+        for (Product product : products
+        ) {
+            boolean isFoundProduct = product.getProductName().equals(productName);
+            if (isFoundProduct) {
+                return product;
+            }
+        }
+
         return null;
     }
 
     @Override
     public boolean isProductOnWarehouse(String productName) {
+        try {
+            for (Product product : getAllProducts()) {
+                if (isProductExist(productName) && product.getProductCount() > 0) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public boolean isProductExist(String productName) {
+        try {
+            for (Product products : getAllProducts()) {
+                if (isProductExist(productName) && products.getProductCount() > 0) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return false;
+    }
+
+    public Product getProductById(Long productId) throws IOException {
+        List<Product> products = getAllProducts();
+
+        for (Product product : products) {
+            boolean isFoundProduct = product.getId() == productId;
+            if (isFoundProduct) {
+                return product;
+            }
+        }
+        return null;
+
     }
 
     @Override
     public boolean isProductExist(Long productId) {
-        return false;
+        Product product = null;
+
+        try {
+            product = getProductById(productId);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (product == null) return false;
+
+        return true;
     }
+
 
     @Override
     public boolean saveProduct(Product product) {
+        try {
+            if (productValidator.isValidate(product)) {
+                productDao.saveProduct(product);
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return false;
     }
 
