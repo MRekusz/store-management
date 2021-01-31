@@ -85,4 +85,17 @@ public class ProductServiceImplementation implements ProductService {
         if (product == null) return false;
         return true;
     }
+
+    @Override
+    public boolean saveProduct(Product product) {
+        try {
+            if (productValidator.isValidate(product)) {
+                productDao.saveProduct(product);
+                return true;
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 }

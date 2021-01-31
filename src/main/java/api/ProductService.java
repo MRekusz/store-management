@@ -14,6 +14,7 @@ public interface ProductService {
     boolean isProductOnWarehouse(String productName);
     boolean isProductByNameExists (String productName);
     boolean isProductByIdExists (Long productID);
+    boolean saveProduct(Product product);
 
 
 

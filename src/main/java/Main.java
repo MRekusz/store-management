@@ -157,7 +157,37 @@ public class Main {
                     break;
             }
         }
+        while (loggedOn) {
+            loggedMenu();
+            read = scanner.nextInt();
 
+            switch (read) {
+                case 1:
+                    productTypeMenu();
+                    read = scanner.nextInt();
+                    Product product = null;
+                    switch (read) {
+                        case 1:
+                            product = createBootsProduct();
+                            break;
+                        case 2:
+                            product = createClothProduct();
+                            break;
+                        case 3:
+                            product = createOtherProduct();
+                            break;
+                    }
+                    if (productService.saveProduct(product)){
+                        System.out.println("Produkt został utowrzony");
+                    } else {
+                        System.out.println("Produkt nie został utowrzony");
+                    }
+                case 0:
+                    loggedOn = false;
+                    break;
+
+            }
+        }
 
     }
 
