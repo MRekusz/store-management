@@ -32,13 +32,32 @@ public class ProductServiceImplementation implements ProductService {
     }
 
     @Override
-    public Integer getProductsCount() throws IOException {
-        return getAllProducts().size();
+    public Integer getCountProducts() throws IOException {
+        return productDao.getAllProducts().size();
+    }
+
+    @Override
+    public Product getProductByProductName(String productName) throws IOException {
+        return null;
+    }
+
+    @Override
+    public boolean isProductOnWarehouse(String productName) {
+        return false;
+    }
+
+    @Override
+    public boolean isProductExist(String productName) {
+        return false;
+    }
+
+    @Override
+    public boolean isProductExist(Long productId) {
+        return false;
     }
 
     @Override
     public boolean saveProduct(Product product) {
-
         return false;
     }
 

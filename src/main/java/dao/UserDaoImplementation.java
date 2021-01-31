@@ -62,30 +62,6 @@ public class UserDaoImplementation implements UserDao {
         return users;
     }
 
-    @Override
-    public User getUserByLogin(String login) throws IOException {
-        List<User> users = getAllUsers();
-        for (User user : users
-        ) {
-            boolean isFoundUser = user.getLogin().equals(login);
-            if (isFoundUser) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public User getUserById(Long userId) throws IOException {
-        List<User> users = getAllUsers();
-        for (User user : users) {
-            boolean isUserById = user.getId() == userId;
-            if (isUserById) {
-                return user;
-            }
-        }
-        return null;
-    }
 
     @Override
     public void removeUserById(Long userId) throws IOException {
