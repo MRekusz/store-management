@@ -3,6 +3,7 @@ import api.UserRegisterLoginFacade;
 import entity.Boots;
 import entity.Cloth;
 import entity.Product;
+import entity.User;
 import facade.UserRegisterLoginFacadeImplementation;
 import service.ProductServiceImplementation;
 
@@ -12,14 +13,14 @@ public class Main {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public void startMenu() {
+    public static void startMenu() {
         System.out.println("MANAGEMENT MENU");
         System.out.println("1 - Zaloguj się");
         System.out.println("2 - Zarejestruj się");
         System.out.println("0 - Wyjdź");
     }
 
-    public static void loggedMenu(){
+    public static void loggedMenu() {
         System.out.println("MANAGEMENT MENU");
         System.out.println("1 - Dodaj nowy product");
         System.out.println("0 - Wyloguj się");
@@ -53,7 +54,7 @@ public class Main {
         return new Product(1, productName, price, weight, color, count);
     }
 
-    public static Boots createBootsProduct(){
+    public static Boots createBootsProduct() {
         String productName, color;
         Double price, weight;
         Integer count, size;
@@ -122,8 +123,43 @@ public class Main {
         boolean loggedOn = false;
         int read;
 
+        while (appOn) {
+            startMenu();
+            read = scanner.nextInt();
 
+            switch (read) {
+                case 1:
+                    System.out.println("Podaj login: ");
+                    String login = scanner.next();
+                    System.out.println("Podaj hsało: ");
+                    String password = scanner.next();
+                    if (userFacade.loginUser(login, password)) {
+                        loggedOn = true;
+                        System.out.println("Zalogowałeś się!");
+                    } else {
+                        System.out.println("Niepoprawne dane");
+                    }
+                    break;
+                case 2:
+                    System.out.println("Podaj login:");
+                    String loginReg = scanner.next();
+                    System.out.println("Podaj hasło:");
+                    String passwordReg = scanner.next();
+                    User user = new User(1l, loginReg, passwordReg);
+                    if (userFacade.registerUser(user)) {
+                        System.out.println("Zarejestrowałeś się!");
+                    } else {
+                        System.out.println("Cos poszło nie tak!");
+                    }
+                    break;
+                case 0:
+                    appOn = false;
+                    break;
+            }
+        }
 
 
     }
+
+
 }

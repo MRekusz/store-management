@@ -62,7 +62,7 @@ public class ProductParser {
         Integer productCount = Integer.parseInt(productInformation[5]);
         Integer size = Integer.parseInt(productInformation[6]);
 
-        return new Boots(id, productName, price, weight, color, productCount, size);
+        return new Boots(id, productName, price, weight, color, productCount, size, false);
     }
 
 }
