@@ -3,12 +3,7 @@ package facade;
 import api.UserRegisterLoginFacade;
 import api.UserService;
 import entity.User;
-import exception.UserLoginAlreadyExistException;
-import exception.UserShortLengthLoginException;
-import exception.UserShortLengthPasswordException;
 import service.UserServiceImplementation;
-
-import java.io.IOException;
 
 public class UserRegisterLoginFacadeImplementation implements UserRegisterLoginFacade {
 
@@ -27,18 +22,8 @@ public class UserRegisterLoginFacadeImplementation implements UserRegisterLoginF
 
     @Override
     public boolean registerUser(User user) {
-        try {
             return userService.addUser(user);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (UserShortLengthPasswordException e) {
-            e.printStackTrace();
-        } catch (UserLoginAlreadyExistException e) {
-            e.printStackTrace();
-        } catch (UserShortLengthLoginException e) {
-            e.printStackTrace();
-        }
-        return false;
+
     }
 
     @Override

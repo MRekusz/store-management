@@ -61,8 +61,12 @@ public class ProductDaoImplementation implements ProductDao {
     }
 
     @Override
-    public void saveProducts(List<Product> products) throws IOException {
-        FileUtils.clearFile(fileName);
+    public void saveProducts(List<Product> products) throws FileNotFoundException {
+        try {
+            FileUtils.clearFile(fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         FileOutputStream fileOutputStream = new FileOutputStream(fileName, true);
         PrintWriter printWriter = new PrintWriter(fileOutputStream);
         for (Product product : products) {
@@ -71,31 +75,7 @@ public class ProductDaoImplementation implements ProductDao {
         printWriter.close();
     }
 
-    @Override
-    public Product getProductById(Long productId) throws IOException {
-        List<Product> products = getAllProducts();
 
-        for (Product product : products) {
-            boolean isFoundProduct = product.getId() == productId;
-            if (isFoundProduct) {
-                return product;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public Product getProductByProductName(String productName) throws IOException {
-        List<Product> products = getAllProducts();
-
-        for (Product product : products) {
-            boolean isFoundProduct = product.getProductName().equals(productName);
-            if (isFoundProduct) {
-                return product;
-            }
-        }
-        return null;
-    }
 
     @Override
     public void removeProductsById(Long productId) throws IOException {

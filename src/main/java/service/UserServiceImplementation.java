@@ -49,7 +49,6 @@ public class UserServiceImplementation implements UserService {
 
     private boolean isLoginAlreadyExist(String login) {
         User user = getUserByLogin(login);
-
         return user != null;
     }
 
