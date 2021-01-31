@@ -2,6 +2,7 @@ package service;
 
 import api.UserDao;
 import api.UserService;
+import dao.UserDaoImplementation;
 import entity.User;
 import exception.UserLoginAlreadyExistException;
 import validator.UserValidator;
@@ -12,9 +13,8 @@ import java.util.List;
 public class UserServiceImplementation implements UserService {
 
     private static UserServiceImplementation instance = null;
-    private UserDao userDao = (UserDao) UserServiceImplementation.getInstance();
+    private UserDao userDao = UserDaoImplementation.getInstance();
     private UserValidator userValidator = UserValidator.getInstance();
-
 
 
     public static UserServiceImplementation getInstance() {
