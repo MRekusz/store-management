@@ -23,10 +23,12 @@ public class Cloth extends Product {
     }
 
     @Override
+    protected String getBasisProductString() {
+        return super.getBasisProductString();
+    }
+
+    @Override
     public String toString() {
-        return super.toString() + "Cloth{" +
-                "size='" + size + '\'' +
-                ", material='" + material + '\'' +
-                '}';
+        return Product_Type + PRODUCT_SEPARATOR + getBasisProductString() + PRODUCT_SEPARATOR + size + PRODUCT_SEPARATOR + material;
     }
 }

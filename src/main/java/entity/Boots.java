@@ -22,13 +22,14 @@ public class Boots extends Product {
         return isNaturalSkin;
     }
 
+    @Override
+    protected String getBasisProductString() {
+        return super.getBasisProductString();
+    }
 
     @Override
     public String toString() {
-        return super.toString() + "Boots{" +
-                "size='" + size + '\'' +
-                ", isNaturalSkin=" + isNaturalSkin +
-                '}';
+        return Product_Type + PRODUCT_SEPARATOR + getBasisProductString() + PRODUCT_SEPARATOR + size + PRODUCT_SEPARATOR + isNaturalSkin;
     }
 
 }

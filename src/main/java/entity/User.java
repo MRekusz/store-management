@@ -2,6 +2,7 @@ package entity;
 
 public class User {
 
+    public final static String USER_SEPARATOR = "#";
 
     long id;
     String login;
@@ -30,9 +31,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                '}';
+        return id + USER_SEPARATOR + login + USER_SEPARATOR + password;
     }
 }

@@ -7,11 +7,10 @@ import java.util.List;
 
 public interface UserService {
 
-    List<User> getAllUsers() throws IOException;
-
     boolean addUser(User user);
 
     void removeUserById(long id) throws IOException;
+    List<User> getAllUsers() throws IOException;
     User getUserByLogin(String login) throws IOException;
 
     public boolean isCorrectLoginAndPassword(String login, String password);
