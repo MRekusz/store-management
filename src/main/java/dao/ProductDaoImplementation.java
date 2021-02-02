@@ -13,7 +13,7 @@ import java.util.List;
 public class ProductDaoImplementation implements ProductDao {
 
     private static ProductDaoImplementation instance = null;
-    private final String fileName = "products.data";
+    private static final String fileName = "products.data";
 
     private ProductDaoImplementation() {
         try {
