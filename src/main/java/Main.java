@@ -1,7 +1,13 @@
+import api.ProductService;
+import api.UserRegisterLoginFacade;
 import entity.Boots;
 import entity.Cloth;
 import entity.Product;
+import entity.User;
+import facade.UserRegisterLoginFacadeImplementation;
+import service.ProductServiceImplementation;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -88,7 +94,80 @@ public class Main {
         material = scanner.next();
         return new Cloth(1L, productName, price, weight, color, count, size, material);
     }
-        public static void main (String[]args){
 
+    public static void main(String[] args) {
+
+        UserRegisterLoginFacade userFacade = UserRegisterLoginFacadeImplementation.getInstance();
+        ProductService productService = null;
+        try {
+            productService = ProductServiceImplementation.getInstance();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        boolean appOn = true;
+        boolean loggedOn = true;
+        int read;
+
+        while (appOn) {
+            startMenu();
+            read = scanner.nextInt();
+            switch (read) {
+                case 1:
+                    System.out.println("Podaj login");
+                    String loginLog = scanner.next();
+                    System.out.println("Podaj hasło");
+                    String passwordLog = scanner.next();
+                    if (userFacade.loginUser(loginLog, passwordLog)) {
+                        loggedOn = true;
+                        System.out.println("Zalogowałeś się");
+                    } else {
+                        System.out.println("Niepoprawne dane");
+                    }
+                    break;
+                case 2:
+                    System.out.println("Podaj login");
+                    String loginReg = scanner.next();
+                    System.out.println("Podaj hasło");
+                    String passwordReg = scanner.next();
+                    User user = new User(1L, loginReg, passwordReg);
+                    if (userFacade.registerUser(user)) {
+                        System.out.println("Zarejestrowałeś się");
+                    } else {
+                        System.out.println("Nie udało się zarejestrować");
+                    }
+                    break;
+                case 0:
+                    appOn = false;
+                    break;
+            }
+            while (appOn) {
+                loggedMenu();
+                read = scanner.nextInt();
+                switch (read) {
+                    case 1:
+                        productTypeMenu();
+                        read = scanner.nextInt();
+                        Product product = null;
+                        switch (read) {
+                            case 1:
+                                product = createBootsProduct();
+                            case 2:
+                                product = createClothProduct();
+                            case 3:
+                                product = createOtherProduct();
+                        }
+                        if (productService.saveProduct(product)) {
+                            System.out.println("Produkt został stworzony");
+                        } else {
+                            System.out.println("Produkt nie został stworzony");
+                        }
+                        break;
+                    case 0:
+                        appOn = false;
+                        break;
+                }
+            }
         }
     }
+}
