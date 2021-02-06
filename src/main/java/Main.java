@@ -1,3 +1,7 @@
+import entity.Boots;
+import entity.Cloth;
+import entity.Product;
+
 import java.util.Scanner;
 
 public class Main {
@@ -23,7 +27,68 @@ public class Main {
         System.out.println("2 - Dodaj ubrania");
     }
 
-    public static void main(String[] args) {
+    public static Product createOtherProduct() {
+        String productName, color;
+        Double price, weight;
+        Integer count;
+        System.out.println("Product name");
+        productName = scanner.next();
 
+        System.out.println("Price: ");
+        price = scanner.nextDouble();
+        System.out.println("Weight: ");
+        weight = scanner.nextDouble();
+        System.out.println("Color: ");
+        color = scanner.next();
+        System.out.println("Count: ");
+        count = scanner.nextInt();
+        return new Product(1, productName, price, weight, color, count);
     }
-}
+
+
+    public static Product createBootsProduct() {
+        String productName, color;
+        Float price, weight;
+        Integer count, size;
+        Boolean isNaturalSkin;
+        System.out.println("ProductName: ");
+        productName = scanner.next();
+        System.out.println("Price: ");
+        price = scanner.nextFloat();
+        System.out.println("Weight: ");
+        weight = scanner.nextFloat();
+        System.out.println("Color: ");
+        color = scanner.next();
+        System.out.println("Count: ");
+        count = scanner.nextInt();
+        System.out.println("Size: ");
+        size = scanner.nextInt();
+        System.out.println("Is natural skin: ");
+        isNaturalSkin = scanner.nextBoolean();
+        return new Boots(1L, productName, price, weight, color, count, size, isNaturalSkin);
+    }
+
+    public static Product createClothProduct() {
+        String productName, color, size, material;
+        Float price, weight;
+        Integer count;
+        System.out.println("ProductName: ");
+        productName = scanner.next();
+        System.out.println("Price: ");
+        price = scanner.nextFloat();
+        System.out.println("Weight: ");
+        weight = scanner.nextFloat();
+        System.out.println("Color: ");
+        color = scanner.next();
+        System.out.println("Count: ");
+        count = scanner.nextInt();
+        System.out.println("Size: ");
+        size = scanner.next();
+        System.out.println("Material: ");
+        material = scanner.next();
+        return new Cloth(1L, productName, price, weight, color, count, size, material);
+    }
+        public static void main (String[]args){
+
+        }
+    }
