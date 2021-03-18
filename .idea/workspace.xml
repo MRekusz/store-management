@@ -19,12 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e742fb5f-4dfa-4bd7-90a3-c700ffb96d15" name="Default Changelist" comment="* new method in validator">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ColorParserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ProductServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UserServiceTest.java" beforeDir="false" />
-    </list>
+    <list default="true" id="e742fb5f-4dfa-4bd7-90a3-c700ffb96d15" name="Default Changelist" comment="* new method in validator" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
