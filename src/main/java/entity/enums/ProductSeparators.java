@@ -9,23 +9,23 @@ public enum ProductSeparators {
         this.word = word;
     }
 
-    @Override
-    public String toString() {
-        return "ProductSeparators{" +
-                "word='" + word + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "ProductSeparators{" +
+//                "word='" + word + '\'' +
+//                '}';
+//    }
 
     public String getWord() {
         return word;
     }
 
-    public static ProductSeparators getIdByChar(String word) {
-        for (ProductSeparators id : ProductSeparators.values()) {
-            if (id.getWord().equals(word)) {
-                return id;
-            }
-        }
-        return null;
-    }
+//    public static ProductSeparators getIdByChar(String word) {
+//        for (ProductSeparators id : ProductSeparators.values()) {
+//            if (id.getWord().equals(word)) {
+//                return id;
+//            }
+//        }
+//        return null;
+//    }
 }
